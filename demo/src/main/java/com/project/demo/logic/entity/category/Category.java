@@ -1,13 +1,14 @@
 package com.project.demo.logic.entity.category;
+import com.project.demo.logic.entity.product.Product;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Table(name = "category")
 @Entity
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -15,6 +16,9 @@ public class Category {
 
     @Column(nullable = false)
     private String description;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<Product> products;
 
     public Long getId() {
         return id;

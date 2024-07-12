@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
 
@@ -24,7 +24,7 @@ public class Product {
     private int quantity;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id", referencedColumnName = "id",nullable = false)
+    @JoinColumn(name = "category_id",nullable = false)
     private Category category;
 
     public Long getId() {
